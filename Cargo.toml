@@ -1,0 +1,27 @@
+[package]
+name = "adar_io"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy = { version = "0.10.1", features = ["tonemapping_luts", "jpeg"]}
+bevy_egui = "0.20.2"
+smooth-bevy-cameras = "0.8.0"
+bevy-fps-window = { path = "../bevy-fps-window" }
+bevy_mod_gizmos = "0.4.0"
+bevy_easings = "0.10.0"
+
+[profile.dev]
+opt-level = 2
+lto = false
+
+[profile.release]
+opt-level = "z"
+codegen-units = 16
+strip = true
+lto = true
+
+[patch.crates-io]
+bevy = { path = "../bevy" }
